@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.SignalR;
-using Microsoft.Owin.Hosting;
+﻿using Microsoft.Owin.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,29 +29,5 @@ namespace ServerApp
                 Console.ReadKey();
             }
         }
-    }
-    public class MyHub : Hub<IClient>, IServer
-    {
-        public string GetServerName()
-        {
-            Console.WriteLine("GetServerName Called From Client");
-            return "Main Server";
-        }
-
-        public void Send(string message)
-        {
-            Console.WriteLine("Send Called From Client");
-            Clients.All.AddMessage(message.ToUpper());
-        }
-    }
-    public interface IServer
-    {
-        void Send(string message);
-        string GetServerName();
-    }
-    public interface IClient
-    {
-        void AddMessage(string message);
-
     }
 }
